@@ -7,5 +7,6 @@
 	<classpathentry kind="src" path="V49 - V50"/>
 	<classpathentry kind="src" path="V50"/>
 	<classpathentry kind="src" path="Switchcase"/>
+	<classpathentry kind="src" path="Spel"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
