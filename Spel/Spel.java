@@ -8,6 +8,7 @@ public class Spel {
 		meny();
 
 	}
+	     
 		public static void meny(){
 			
 		input = new Scanner(System.in);
@@ -21,6 +22,7 @@ public class Spel {
 		int choice = 0;
 		int number = 0;
 		int guess = 0;
+		int count = 0 ;
 		boolean on = true;
 
 		do {
@@ -58,8 +60,10 @@ public class Spel {
 	
 		while(on) {
 			guess = input.nextInt();
+			count++;
+			System.out.println(count);
 			if (guess == number) {
-				System.out.println("Där fick du allt rätt gubben.");
+				printWinningMessage(count);
 				on = false;
 			}else if(guess < number) {
 			System.out.println("Lite väl lågt där gubben.");
@@ -69,10 +73,14 @@ public class Spel {
 			
 			}else if (guess > number) {
 			System.out.println("Lite väl högt där gubben.");
-			}
-			
-			
+			}			
 		
 		}
-	}
+		
+		
+		}
+		public static void printWinningMessage(int count) {
+			System.out.println("Där fick du allt rätt gubben.");
+			System.out.println("Du gissade " + count + " gånger");
+		}
 }
