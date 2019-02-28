@@ -61,9 +61,13 @@ public class Spel {
 		while(on) {
 			guess = input.nextInt();
 			count++;
-			System.out.println(count);
+			System.out.println("Gisning nr " + count);
 			if (guess == number) {
 				printWinningMessage(count);
+				on = false;
+			} if (count > 10 && guess == number){
+				printWinningMessage2(count);
+				printWinningMessage3(count);
 				on = false;
 			}else if(guess < number) {
 			System.out.println("Lite väl lågt där gubben.");
@@ -73,14 +77,29 @@ public class Spel {
 			
 			}else if (guess > number) {
 			System.out.println("Lite väl högt där gubben.");
-			}			
-		
+			}
 		}
-		
-		
-		}
+	}
 		public static void printWinningMessage(int count) {
 			System.out.println("Där fick du allt rätt gubben.");
-			System.out.println("Du gissade " + count + " gånger");
 		}
+	
+		public static void printWinningMessage2(int count) {
+			System.out.println("Behövde du verkligen mer än 10 förösk? Stupid.");
+			System.out.println("Du gissade totalt " + count + " gånger.");
+			System.out.println("");
+			System.out.println("Vill du köra igen? Klicka 5.");
+		}
+		
+		public static void printWinningMessage3(int count) {
+			
+			int choice = 0;
+			switch(choice) {
+			
+			case 5:
+				meny();
+				break;
+			}
+	}
+
 }
