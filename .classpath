@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="V50"/>
 	<classpathentry kind="src" path="Switchcase"/>
 	<classpathentry kind="src" path="Spel"/>
+	<classpathentry kind="src" path="ArrayList"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
