@@ -9,5 +9,7 @@
 	<classpathentry kind="src" path="Switchcase"/>
 	<classpathentry kind="src" path="Spel"/>
 	<classpathentry kind="src" path="ArrayList"/>
+	<classpathentry kind="src" path="Hangman"/>
+	<classpathentry kind="lib" path="C:/Users/övrigt/Downloads/HangmanConsoleWindow.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
