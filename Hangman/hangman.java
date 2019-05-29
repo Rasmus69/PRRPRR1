@@ -53,8 +53,6 @@ public class hangman {
 				"========="	
 		};
 		
-		static int livVisa = gubbe.length - liv;
-		
 	
 		public static void main(String[] args){
 			start();
@@ -71,6 +69,9 @@ public class hangman {
 			hcw.println("");
 			hcw.println("(Detta spelet har ej ord med bokstäverna");
 			hcw.println("'å' 'ä' 'ö').");
+			
+			//Här väljder den ett av orden som finns i arraylisten.
+			//Det är även en switch så man kan välja om man vill köra på lätt nivå eller svår nivå.
 			
 			char input = hcw.nextChar();
 			switch (input) {
@@ -98,6 +99,7 @@ public class hangman {
 		}
 		
 		public static void skrivut() {
+			kollaliv();
 			hcw.clear();
 			hcw.println("Detta är din gubbe.");
 			hcw.println(gubbe[liv]);
@@ -141,7 +143,11 @@ public class hangman {
 				}
 			}
 			
-			if(livVisa == 0 ) {
+			skrivut();
+		}
+		
+		public static void kollaliv() {
+			if(liv == gubbe.length ) {
 				hcw.clear();
 				hcw.println("Du har förlorat.");
 				hcw.println("Vill du spela igen?");
@@ -156,7 +162,5 @@ public class hangman {
 					break;
 				}
 			}
-			
-			skrivut();
 		}
 }
