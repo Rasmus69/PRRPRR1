@@ -10,41 +10,40 @@ public class hangman {
 	static String rättgissade = "";
 	static String felgissade = "";
 	static int liv;
-	//static String[] Ord = {"hej"};
-	//static String[] Ordhard = {"hej"};
-	static String[] Ord = {"Ord", "Klok", "NTI", "Skola", "Idrott", "kanske", "Tycker"}; // <--Ordlistan för lätt
-	static String[] Ordhard = {"Impertinent", "Hegemoni", "Verserad", "Kompilera", "Cinematek", "Renegat", "Karessera"}; // <--Ordlistan för svår
-
+	static String[] Ord = {"ord", "klok", "nti", "skola", "idrott", "kanske", "tycker"}; // <--Ordlistan för lätt
+	static String[] Ordhard = {"impertinent", "hegemoni", "verserad", "kompilera", "cinematek", "renegat", "karessera"}; // <--Ordlistan för svår
+	
+	//Hang man gubben som skrivs ut varje gång man gissa ren bokstav fel.
 	static String[] gubbe = {
-			"  +---+\r\n" + 
+			"  /---+\r\n" + 
 			"  |   |\r\n" + 
 			"      |\r\n" + 
 			"      |\r\n" + 
 			"      |\r\n" + 
 			"      |\r\n" + 
 			"=========",
-			"  +---+\r\n" + 
+			"  /---+\r\n" + 
 			"  |   |\r\n" + 
 			"  O   |\r\n" + 
 			"  |   |\r\n" + 
 			"      |\r\n" + 
 			"      |\r\n" + 
 			"=========",
-			"  +---+\r\n" + 
+			"  /---+\r\n" + 
 			"  |   |\r\n" + 
 			"  O   |\r\n" + 
 			" /|   |\r\n" + 
 			"      |\r\n" + 
 			"      |\r\n" + 
 			"=========",
-			"  +---+\r\n" + 
+			"  /---+\r\n" + 
 			"  |   |\r\n" + 
 			"  O   |\r\n" + 
 			" /|\\  |\r\n" + 
 			"      |\r\n" + 
 			"      |\r\n" + 
 			"=========",
-			"  +---+\r\n" + 
+			"  /---+r\n" + 
 			"  |   |\r\n" + 
 			"  O   |\r\n" + 
 			" /|\\  |\r\n" + 
@@ -67,11 +66,11 @@ public class hangman {
 		hcw.println("Klicka på 2 om du vill starta spelet");
 		hcw.println("med svårare ord.");
 		hcw.println("");
-		hcw.println("(Detta spelet har ej med bokstäverna");
+		hcw.println("(Detta spelet har ej ord med bokstäverna");
 		hcw.println("'å' 'ä' 'ö').");
 		
-		//Här väljder den ett av orden som finns i arraylisten.
-		//Det är även en switch så man kan välja om man vill köra på lätt nivå eller svår nivå.
+		//Här väljder den ett av orden som finns i arraylisten. (hittade detta på internet vet inte om det var okej men hoppas det :/)
+		//Det är även en switch så man kan välja om man vill köra på lätt eller svår nivå.
 		
 		char input = hcw.nextChar();
 		switch (input) {
@@ -91,18 +90,20 @@ public class hangman {
 	
 	public static void startaspel() {
 		for(int i = 0; i < hemligtord.length(); i++){
-			rättgissade += "*";
+			rättgissade += "*"; //Byter ut de hemliga ordet mot *.
 		}
 		
-		skrivut();
+		skrivut(); //Går in till metoden skrivut.
 	}
 	
 	public static void skrivut() {
 		kollaliv();
-		hcw.clear();
+		hcw.clear(); //clearar skärmen och skriver ut gubben samt hur många liv man har osv..
 		hcw.println("Detta är din gubbe.");
+		hcw.println("Du har 5 liv");
 		hcw.println(gubbe[liv]);
 		hcw.println(rättgissade);
+		hcw.println("Fel gissade: " + liv);
 		hcw.println("Gissa bokstav här.");
 		
 		char bokstav = hcw.nextChar();
@@ -121,20 +122,23 @@ public class hangman {
 			rättgissade = String.valueOf(rättgissadearray);
 		}else {
 			felgissade += bokstav;
-			liv += 1;
-			System.out.print(liv);
+			liv += 1; //om man gissar fel så l'ger den till +1 på liv.
+			System.out.print(liv); //använde denna för och fixa en bugg som fann i spelet innan.
 		}
 		
 		//Går in ifall man vinner
 		
 		if(rättgissade.indexOf('*') < 0) {
 			hcw.clear();
-			hcw.println("Grattis du vann spelet.");
+			hcw.println("Grattis du vann spelet!!!!");
+			hcw.println();
 			hcw.println("Vill du spela igen?");
 			hcw.println("Klicka på 1 för att starta om.");
 			hcw.println();
 			hcw.println("Klicka på vad som helst förutom 1");
 			hcw.println("för att avsluta spelet.");
+			
+			//används för att kolla om man vill spela igen eller avlsuta spelet.
 			
 			char val = hcw.nextChar();
 			switch (val) {
@@ -143,7 +147,7 @@ public class hangman {
 					start();
 					break;
 				default:
-					System.exit(0);
+					System.exit(0); //används för att stänga ner spelet.
 					break;
 			}
 		}
@@ -157,12 +161,16 @@ public class hangman {
 		if(liv == gubbe.length ) {
 			hcw.clear();
 			hcw.println("Du har förlorat.");
+			hcw.println();
+			hcw.println("Det hemliga ordet var: " + hemligtord);
+			hcw.println();
 			hcw.println("Vill du spela igen?");
 			hcw.println("Klicka på 1 för att starta om.");
 			hcw.println();
 			hcw.println("Klicka på vad som helst förutom 1");
 			hcw.println("för att avsluta spelet.");
 			
+			//samma här som där uppe fast den går in här ifall man förlorar.
 			char val = hcw.nextChar();
 			switch (val) {
 				case '1':
